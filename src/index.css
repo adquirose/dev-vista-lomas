@@ -1,0 +1,276 @@
+:root {
+  --color-primary: #4c4c4a;
+  --color-ws: #71a83c;
+  --color-white:#FFFFFF;
+  --color-black:#000000;
+  --color-danger:rgb(5, 146, 127);
+}
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background-color: var(--color-primary);
+  min-width: 320px;
+  min-height: 100vh;
+  color:var(--color-white);
+  font-family: 'Montserrat', sans-serif;;
+}
+.bg-black{
+  color:var(--color-black);
+}
+.bg-white{
+  color:var(--color-white);
+}
+.color-black{
+  color:var(--color-black);
+}
+.color-white{
+  color:var(--color-white);
+}
+.logo-vista-lomas{
+  width:70px;
+}
+.logo-tavacorp{
+  height:55px;
+  padding-left: 5px;
+}
+.section{
+  padding-top: 60px;
+  position: relative;
+}
+.subraya{
+  width: 85px;
+  height: 10px;
+}
+#proyecto-container h2{
+  margin-left: 35px;
+}
+#proyecto-container p {
+  max-width: 540px;
+  margin-top: 24px;
+}
+#proyecto-container button{
+  color:var(--color-black);
+  background-color: var(--color-white);
+  font-weight: 600;
+  font-size: 12px;
+  /* padding-left: 28px;
+  padding-right: 21px; */
+}
+#proyecto-container button:active{
+  border:none;
+}
+#proyecto-container button:focus-visible{
+  border:none !important;
+  outline: none;
+}
+#proyecto-container .image-proyecto{
+  width: 100%;
+  max-width: 520px;
+  position: absolute;
+}
+#proyecto-container .image-proyecto-container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#proyecto-container .image-proyecto-container h4{
+  color:var(--color-primary);
+  font-weight: 300;
+}
+#proyecto-container .image-proyecto-container .subraya{
+  background-color: var(--color-primary);
+  width: 55px;
+  height: 7px;
+}
+#emplazamiento .image-container{
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+#emplazamiento .image-emplazamiento{
+  width: 100%;
+  max-width: 900px;
+}
+#emplazamiento h2{
+  margin-left: 35px;
+  color:var(--color-black);
+}
+#cotiza h2{
+  margin-left: 35px;
+}
+.button{
+  background-color: var(--color-danger) !important;
+  border-radius: 3px;
+  border:0;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  color:var(--color-white) !important;
+  font-weight: 600;
+  font-size: 12px;
+}
+.button:active{
+  border:none;
+}
+.button:focus{
+  border:none;
+}
+#las-casas h2{
+  margin-left: 35px;
+}
+#barrio-entorno h2{
+  margin-left: 35px;
+}
+#barrio-entorno img{
+  width: 100%;
+  max-width: 305px;
+  min-width: 120px;
+  height: 170px;
+}
+#masterplan360 iframe{
+  height: 500px;
+}
+#footer h6{
+  font-size: 12px;
+}
+#footer h5{
+  font-size: 14px;
+}
+#footer .border{
+  border-top: 1px solid var(--color-white);
+  border-bottom: 1px solid var(--color-white);
+  border-left: 0 !important;
+  border-right: 0 !important;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 40px;
+}
+.swiper-button-next{
+  color: var(--color-white) !important;
+}
+.swiper-button-prev{
+  color: var(--color-white) !important;
+}
+.header-container{
+  width: 100%;
+  max-width: 100%;
+  min-width: 320px;
+  height: 470px;
+  min-height: 360px;
+}
+#header{
+  margin-top: 24px;
+}
+#header .swiper{
+  height: 100%;
+  /* width: 100%;
+  position: absolute;
+  top:0 */
+}
+#header img{
+  width:100%;
+  position: absolute; 
+  bottom:0px;
+}
+#contacto h2{
+  margin-left: 35px;
+}
+#contacto a{
+  text-decoration: none;
+}
+#contacto h3{
+  font-size: 1.35rem;
+  color: var(--color-primary);
+}
+#contacto p, a{
+  color:var(--color-primary);
+  font-size: 1rem;
+  display:block;
+  margin-bottom: 5px;
+}
+#contacto a:hover{
+  text-decoration: none;
+  color:var(--color-black);
+}
+#contacto form label{
+  color:var(--color-primary);
+}
+#navigator ul li {
+  color:var(--color-black);
+  font-size: 1rem;
+  list-style-type: none;
+  padding-top: 5px;
+}
+.bold{
+  font-weight: 600;
+}
+#navigator ul li a{
+  color:var(--color-black);
+  font-size: 1rem;
+  text-decoration: none;
+}
+#navigator ul{
+  padding-top: 100px;
+  padding-left:40px;
+}
+.gallery-container{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 10px;
+  padding-top:40px;
+  padding-bottom:40px;
+  justify-items:center;
+}
+.image-gallery{
+  width: 100%;
+  max-width: 420px;
+  object-fit: contain;
+}
+#footer .footer-tavacorp{
+  width:125px; 
+  position:absolute; 
+  right:20px;
+}
+#footer .footer-vista-lomas{
+  width:70px; 
+  position:absolute;
+  right:175px;
+}
+@media (max-width: 420px) {
+  #proyecto-container .image-proyecto-container{
+    position: relative;
+    width: 100%;
+    height: 240px;
+  }
+  .logo-vista-lomas{
+    width:50px;
+  }
+  .logo-tavacorp{
+    height:50px;
+  }
+  #header img{
+    height: 100%;
+    object-fit: cover;
+  }
+  .gallery-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+    grid-auto-columns: 320px;
+    grid-gap: 10px;
+  }
+  #footer .footer-tavacorp{
+    width:80px; 
+    position:absolute; 
+    right:10px;
+  }
+  #footer .footer-vista-lomas{
+    width:50px; 
+    position:absolute;
+    right:99px;
+  }
+}
+
