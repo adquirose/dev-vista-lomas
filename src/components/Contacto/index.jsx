@@ -9,14 +9,24 @@ const INITIAL_STATE = {
   nombre:'',
   rut:'',
   telefono:'',
-  tipoCasa:'--Choose an option--',
-  valorUfPeso:'',
+  tipoCasa:'',
+  valorUfPesos:'',
   email:''
 }
 const options = [
   {value: '', text: '-- Elije Tipo de Casa --'},
-  {value: 'modelo-a', text: 'Modelo A'},
-  {value: 'modelo-a1', text: 'Modelo A1'},
+  {value: '1', text: 'Casa 1'},
+  {value: '2', text: 'Casa 2'},
+  {value: '3', text: 'Casa 3'},
+  {value: '4', text: 'Casa 4'},
+  {value: '5', text: 'Casa 5'},
+  {value: '6', text: 'Casa 6'},
+  {value: '7', text: 'Casa 7'},
+  {value: '8', text: 'Casa 8'},
+  {value: '9', text: 'Casa 9'},
+  {value: '10', text: 'Casa 10'},
+  {value: '11', text: 'Casa 11'},
+  {value: '12', text: 'Casa 12'},
 ];
 function Formulario(){
   const [data, setData] = useState(INITIAL_STATE)
@@ -26,7 +36,7 @@ function Formulario(){
 
   const handleOnChange = event => {
     event.preventDefault()
-    setData({...data, valorUfPeso: valorUfPesos, [event.target.name]: event.target.value})
+    setData({...data, valorUfPesos: valorUfPesos, [event.target.name]: event.target.value})
   }
   
   useEffect(()=> {
@@ -42,31 +52,28 @@ function Formulario(){
   const handleOnSubmit = (event) => {
     event.preventDefault();
 		const { nombre, email, rut, telefono, tipoCasa } = data 
-		const message = `
-			Nombre: ${nombre} 
-			Email: ${email} 
-			Rut: ${rut}
-      Telefono: ${telefono}
-      Tipo Casa: ${tipoCasa}
-    `
-    const info = {
-      to:'vistalomas@tavacorp.cl',
+	
+    const body = {
+      to:'adquirose@gmail.com',
       replyTo: email,
-      subject:'Formulario Contacto',
-      text: message
+      subject:'Formulario Cotización',
+      nombre: nombre,
+      email: email,
+      rut: rut,
+      telefono:telefono,
+      tipoCasa: tipoCasa
     }
-
 		setIsLoading(true)
-		axios.post('https://us-central1-firemailer.cloudfunctions.net/submitContactoFZ',info)
+		axios.post('https://us-central1-firemailer.cloudfunctions.net/submitContactoFZ/vista-lomas', body)
 			.then(res => {
-				console.log(`mensaje enviado: ${res.data.isEmailSend}`)
+				console.log(`mensaje enviado: ${res.data}`)
 				setIsLoading(false)
 			})
 			.catch(error => console.log(`ha ocurrido un error ${error}`))
 		setData(INITIAL_STATE)
 	};
   const { nombre, email, rut, tipoCasa, telefono } = data
-  const isDisabled = nombre === '' || email === '' 
+  const isDisabled = nombre === '' || email === '' || rut === '' || telefono === '' || tipoCasa === ''
   return(
     <Form onSubmit={handleOnSubmit}>
       <FormGroup>
