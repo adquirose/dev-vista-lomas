@@ -61,7 +61,11 @@ function Formulario(){
       email: email,
       rut: rut,
       telefono:telefono,
+<<<<<<< HEAD
       tipoCasa: tipoCasa
+=======
+      tipo: tipoCasa
+>>>>>>> 8a50ba8c8efeae67cb18fe4ead9a41f4d9f22629
     }
 		setIsLoading(true)
 		axios.post('https://us-central1-firemailer.cloudfunctions.net/submitContactoFZ/vista-lomas', body)
