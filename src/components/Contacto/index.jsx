@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   nombre:'',
   rut:'',
   telefono:'',
-  tipoCasa:'',
+  casa:'',
   valorUfPesos:'',
   email:''
 }
@@ -51,7 +51,7 @@ function Formulario(){
   
   const handleOnSubmit = (event) => {
     event.preventDefault();
-		const { nombre, email, rut, telefono, tipoCasa } = data 
+		const { nombre, email, rut, telefono, casa } = data 
 	
     const body = {
       to:'adquirose@gmail.com',
@@ -61,7 +61,7 @@ function Formulario(){
       email: email,
       rut: rut,
       telefono:telefono,
-      tipoCasa: tipoCasa
+      casa: casa
     }
 		setIsLoading(true)
 		axios.post('https://us-central1-firemailer.cloudfunctions.net/submitContactoFZ/vista-lomas', body)
@@ -72,8 +72,8 @@ function Formulario(){
 			.catch(error => console.log(`ha ocurrido un error ${error}`))
 		setData(INITIAL_STATE)
 	};
-  const { nombre, email, rut, tipoCasa, telefono } = data
-  const isDisabled = nombre === '' || email === '' || rut === '' || telefono === '' || tipoCasa === ''
+  const { nombre, email, rut, casa, telefono } = data
+  const isDisabled = nombre === '' || email === '' || rut === '' || telefono === '' || casa === ''
   return(
     <Form onSubmit={handleOnSubmit}>
       <FormGroup>
@@ -111,9 +111,9 @@ function Formulario(){
       <FormGroup>
         <Input
           id="exampleSelect"
-          name="tipoCasa"
+          name="casa"
           type="select"
-          value={tipoCasa}
+          value={casa}
           onChange={handleOnChange}
         >
           {options.map(option => (
