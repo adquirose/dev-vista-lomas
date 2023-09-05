@@ -13,6 +13,7 @@ const INITIAL_STATE = {
   valorUfPesos:'',
   email:''
 }
+
 const options = [
   {value: '', text: '-- Elije Tipo de Casa --'},
   {value: '1', text: 'Casa 1'},
@@ -30,10 +31,10 @@ const options = [
 ];
 function Formulario(){
   const [data, setData] = useState(INITIAL_STATE)
+  const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [valorUfPesos, setValorUfPesos] = useState(0)
   
-
   const handleOnChange = event => {
     event.preventDefault()
     setData({...data, valorUfPesos: valorUfPesos, [event.target.name]: event.target.value})
@@ -51,10 +52,10 @@ function Formulario(){
   
   const handleOnSubmit = (event) => {
     event.preventDefault();
+
 		const { nombre, email, rut, telefono, casa } = data 
 	
     const body = {
-      to:'adquirose@gmail.com',
       replyTo: email,
       subject:'Formulario Cotización',
       nombre: nombre,
@@ -131,7 +132,8 @@ function Formulario(){
           >
             Enviar
           </Button>
-        }   
+        }
+        { error && <span>{error}</span>}  
     </Form>
   )
 }
@@ -142,7 +144,7 @@ function Contacto() {
         <Container>
             <Row>
               <Col>
-                <h2 className="color-black">CONTÁCTANOS</h2>
+                <h2 className="color-black">COTIZAR</h2>
                 <div className='subraya bg-black'/>  
               </Col>
             </Row>
