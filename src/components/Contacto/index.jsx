@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { validateRut } from '@fdograph/rut-utilities';
 import { Container, Row, Col, Form, FormGroup, Input, Button } from "reactstrap"
 import { Email, LogoWhatsapp, PhoneCall } from '../Icons';
 import LogoTavacorp from '../../assets/images/tavacorp.png';
@@ -54,27 +55,32 @@ function Formulario(){
     event.preventDefault();
 
 		const { nombre, email, rut, telefono, casa } = data 
-	
-    const body = {
-      replyTo: email,
-      subject:'Formulario Cotización',
-      nombre: nombre,
-      email: email,
-      rut: rut,
-      telefono:telefono,
-      casa: casa
+    if(validateRut(rut)){
+      const body = {
+        replyTo: email,
+        subject:'Formulario Cotización',
+        nombre: nombre,
+        email: email,
+        rut: rut,
+        telefono:telefono,
+        casa: casa
+      }
+      setIsLoading(true)
+      axios.post('https://us-central1-firemailer.cloudfunctions.net/submitContactoFZ/vista-lomas', body)
+        .then(res => {
+          console.log(`mensaje enviado: ${res.data}`)
+          setIsLoading(false)
+          setError('')
+        })
+        .catch(error => console.log(`ha ocurrido un error ${error}`))
+      setData(INITIAL_STATE)
+    } else{
+      setError(' Rut invalido')
     }
-		setIsLoading(true)
-		axios.post('https://us-central1-firemailer.cloudfunctions.net/submitContactoFZ/vista-lomas', body)
-			.then(res => {
-				console.log(`mensaje enviado: ${res.data}`)
-				setIsLoading(false)
-			})
-			.catch(error => console.log(`ha ocurrido un error ${error}`))
-		setData(INITIAL_STATE)
-	};
+  }
   const { nombre, email, rut, casa, telefono } = data
   const isDisabled = nombre === '' || email === '' || rut === '' || telefono === '' || casa === ''
+
   return(
     <Form onSubmit={handleOnSubmit}>
       <FormGroup>
@@ -133,7 +139,7 @@ function Formulario(){
             Enviar
           </Button>
         }
-        { error && <span>{error}</span>}  
+        { error && <span style={{color:'black'}}>{error}</span>}  
     </Form>
   )
 }
