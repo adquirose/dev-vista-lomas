@@ -42,7 +42,6 @@ function Formulario(){
   }
   
   useEffect(()=> {
-    console.log(data)
     axios.get('https://mindicador.cl/api')
       .then((response) => {
         setValorUfPesos(response.data.uf.valor)
@@ -66,7 +65,8 @@ function Formulario(){
         casa: casa
       }
       setIsLoading(true)
-      axios.post('https://us-central1-firemailer.cloudfunctions.net/submitContactoFZ/vista-lomas', body)
+
+      axios.post('https://us-central1-firemailer.cloudfunctions.net/submitContactoFZ/vista-lomas', body,{ headers: { "Access-Control-Allow-Origin": "*" }})
         .then(res => {
           console.log(`mensaje enviado: ${res.data}`)
           setIsLoading(false)
