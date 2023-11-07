@@ -35,6 +35,7 @@ function Formulario(){
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [valorUfPesos, setValorUfPesos] = useState(0)
+  const [message, setMessage] = useState('')
   
   const handleOnChange = event => {
     event.preventDefault()
@@ -71,6 +72,8 @@ function Formulario(){
           console.log(`mensaje enviado: ${res.data}`)
           setIsLoading(false)
           setError('')
+          setMessage('sus datos han sido enviados')
+          setTimeout(() => setMessage(''),2000)
         })
         .catch(error => console.log(`ha ocurrido un error ${error}`))
       setData(INITIAL_STATE)
@@ -139,6 +142,7 @@ function Formulario(){
             Enviar
           </Button>
         }
+        { message && <span style={{color:'black'}}>{message}</span>}
         { error && <span style={{color:'black'}}>{error}</span>}  
     </Form>
   )
